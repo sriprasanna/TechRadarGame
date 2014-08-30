@@ -40,4 +40,17 @@ RSpec.describe User, :type => :model do
       expect(@john.history.count).to eq(2)
     end
   end
+  
+  describe "find_or_create_from_auth_hash" do
+    it "should create a user with the auth hash" do
+      user = User.find_or_create_from_auth_hash(OmniAuth.config.mock_auth[:twitter])
+      expect(user.id).not_to be_nil
+    end
+    
+    it "should get the user if the user already exists" do
+      user = User.find_or_create_from_auth_hash(OmniAuth.config.mock_auth[:twitter])
+      another_user = User.find_or_create_from_auth_hash(OmniAuth.config.mock_auth[:twitter])
+      expect(user).to eq(another_user)
+    end
+  end
 end

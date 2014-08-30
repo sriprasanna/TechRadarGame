@@ -11,4 +11,14 @@ class User < ActiveRecord::Base
   def history
     History.where("won_by_id = ? OR lost_by_id = ?", id, id)
   end
+  
+  def self.find_or_create_from_auth_hash(auth_hash)
+    provider = auth_hash[:provider]
+    info = auth_hash[:info]
+    user = find_or_create_by(provider: provider, uid: auth_hash[:uid])
+    user.update name:   info[:name],
+                image:  info[:image],
+                url:    info[:urls][provider.humanize]
+    user
+  end
 end
