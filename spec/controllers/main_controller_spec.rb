@@ -43,4 +43,18 @@ RSpec.describe MainController, :type => :controller do
       expect(assigns(:user)).to eq(user)
     end
   end
+  
+  describe "Status board" do
+    before do
+      30.times do |count|
+        user = FactoryGirl.create(:facebook_user, uid: SecureRandom.uuid)
+        user.update cards_count: count
+      end
+    end
+    it "should render the status board with the top 20 users" do
+      get :status_board
+      ranks = assigns(:users).collect(&:rank)
+      expect(ranks).to eq((1..20).to_a)
+    end
+  end
 end
