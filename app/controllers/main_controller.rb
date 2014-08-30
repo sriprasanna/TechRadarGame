@@ -17,6 +17,16 @@ class MainController < ApplicationController
     @users = User.sort_by_ranking.limit(20)
   end
   
+  def timeline
+    @history = History.all.limit(100)
+  end
+  
+  def timeline_updates
+    time = DateTime.parse(params[:after])
+    @history = History.after(time)
+    render partial: "main/histories"
+  end
+  
   private
   def redirect_if_not_logged_in
     if not logged_in?

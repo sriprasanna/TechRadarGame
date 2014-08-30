@@ -57,4 +57,31 @@ RSpec.describe MainController, :type => :controller do
       expect(ranks).to eq((1..20).to_a)
     end
   end
+  
+  describe "Timeline" do
+    before do
+      @joe = FactoryGirl.create(:facebook_user)
+      @john = FactoryGirl.create(:twitter_user)
+      @techniques_card = FactoryGirl.build(:techniques_card)
+      @tools_card = FactoryGirl.build(:tools_card)
+      @joe.cards << @techniques_card
+      @joe.save!
+      @john.cards << @tools_card
+      @john.save!
+      @joe.won(@techniques_card)
+    end
+    
+    it "should render the timeline page" do
+      get :timeline
+      expect(assigns(:history).count).to eq(1)
+    end
+    
+    it "should render template with the history after given time" do
+      History.first.update created_at: 2.days.ago
+      @john.won(@techniques_card)
+      get :timeline_updates, after: 1.day.ago
+      expect(assigns(:history)).to eq([History.last])
+      expect(response).to render_template("main/_histories")
+    end
+  end
 end

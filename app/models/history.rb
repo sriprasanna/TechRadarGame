@@ -4,4 +4,6 @@ class History < ActiveRecord::Base
   belongs_to :won_by, :class_name => "User"
   belongs_to :lost_by, :class_name => "User"
   belongs_to :card
+  
+  scope :after, ->(time) { where('created_at > ?', time) }
 end

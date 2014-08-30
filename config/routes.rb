@@ -5,4 +5,6 @@ TechRadarGame::Application.routes.draw do
   get '/login', to: 'main#login'
   get '/profile/:id', to: 'main#profile'
   get '/status_board', to: 'main#status_board'
+  get '/timeline', to: 'main#timeline'
+  get '/timeline_updates', to: 'main#timeline_updates'
 end
