@@ -49,6 +49,20 @@ RSpec.describe User, :type => :model do
     end
   end
   
+  describe "sort_by_ranking" do
+    before :each do
+      @joe = FactoryGirl.create(:facebook_user)
+      @joe.update cards_count: 5
+      @john = FactoryGirl.create(:twitter_user)
+      @john.update cards_count: 10
+    end
+    
+    it "should return users sorted descending by the number of cards they have" do
+      expect(User.sort_by_ranking.first).to eq(@john)
+      expect(User.sort_by_ranking.last).to eq(@joe)
+    end
+  end
+  
   describe "find_or_create_from_auth_hash" do
     it "should create a user with the auth hash" do
       user = User.find_or_create_from_auth_hash(OmniAuth.config.mock_auth[:twitter])
