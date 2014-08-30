@@ -35,4 +35,12 @@ RSpec.describe MainController, :type => :controller do
       expect(response).to render_template(:login)
     end
   end
+  
+  describe "Profile" do
+    it "should render profile page for an user" do
+      user = FactoryGirl.create(:facebook_user)
+      get :profile, id: user.id
+      expect(assigns(:user)).to eq(user)
+    end
+  end
 end

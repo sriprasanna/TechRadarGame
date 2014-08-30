@@ -3,4 +3,5 @@ TechRadarGame::Application.routes.draw do
   get '/logout', to: 'session#destroy'
   get '/won_card/:uuid', to: 'main#won_card'
   get '/login', to: 'main#login'
+  get '/profile/:id', to: 'main#profile'
 end

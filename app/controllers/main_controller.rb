@@ -9,6 +9,10 @@ class MainController < ApplicationController
     redirect_to "/"
   end
   
+  def profile
+    @user = User.find params[:id]
+  end
+  
   private
   def redirect_if_not_logged_in
     if not logged_in?
