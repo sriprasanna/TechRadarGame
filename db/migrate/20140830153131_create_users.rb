@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :image
       t.string :url
+      t.integer :cards_count, default: 0
       t.timestamps
     end
     

@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140830161229) do
     t.string   "name"
     t.string   "image"
     t.string   "url"
+    t.integer  "cards_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

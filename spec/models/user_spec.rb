@@ -25,8 +25,12 @@ RSpec.describe User, :type => :model do
     
     it "should return all the history user won and lost" do
       @joe.won(@tools_card)
+      @joe.reload
+      @john.reload
       expect(History.count).to eq(1)
       expect(@joe.history.count).to eq(1)
+      expect(@joe.cards_count).to eq(2)
+      expect(@john.cards_count).to eq(0)
       expect(@joe.history.first.won_by).to eq(@joe)
       expect(@joe.history.first.lost_by).to eq(@john)
       
@@ -35,9 +39,13 @@ RSpec.describe User, :type => :model do
       expect(@john.history.first.lost_by).to eq(@john)
       
       @john.won(@techniques_card)
+      @joe.reload
+      @john.reload
       expect(History.count).to eq(2)
       expect(@joe.history.count).to eq(2)
       expect(@john.history.count).to eq(2)
+      expect(@joe.cards_count).to eq(1)
+      expect(@john.cards_count).to eq(1)
     end
   end
   
