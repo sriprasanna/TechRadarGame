@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   
   has_many :cards
   
-  scope :sort_by_ranking, -> { order('cards_count DESC') }
+  scope :sort_by_ranking, -> { order(cards_count: :desc) }
   
   def won(card)
     card.update user: self
