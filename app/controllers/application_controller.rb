@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def set_referrer
     session[:return_to] ||= request.referer
   end
+  
+  def logged_in?
+    not session[:user_id].nil?
+  end
 end

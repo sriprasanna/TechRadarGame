@@ -10,7 +10,7 @@ FactoryGirl.define do
   end
   
   factory :twitter_user, class: User  do
-    provider "facebook"
+    provider "twitter"
     uid SecureRandom.uuid
     name "John Q Public"
     image "http://si0.twimg.com/sticky/default_profile_images/default_profile_2_normal.png"

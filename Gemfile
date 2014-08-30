@@ -15,6 +15,7 @@ gem 'omniauth-twitter'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem "slim-rails"
 
 group :development, :test do
   gem 'rspec-rails'

@@ -1,4 +1,5 @@
 class Card < ActiveRecord::Base
+  self.inheritance_column = nil
   validates_presence_of :uuid, :type, :user_id
   
   belongs_to :user
