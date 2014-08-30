@@ -6,4 +6,8 @@ RSpec.describe Card, :type => :model do
     it { should validate_presence_of(:type) }
     it { should validate_presence_of(:user_id) }
   end
+  
+  describe "Relations" do
+    it { should belong_to(:user) }
+  end
 end

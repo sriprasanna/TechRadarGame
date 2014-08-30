@@ -28,16 +28,16 @@ ActiveRecord::Schema.define(version: 20140830161229) do
   add_index "cards", ["uuid"], name: "index_cards_on_uuid", using: :btree
 
   create_table "histories", force: true do |t|
-    t.integer  "won_by"
-    t.integer  "lost_by"
-    t.integer  "card"
+    t.integer  "won_by_id"
+    t.integer  "lost_by_id"
+    t.integer  "card_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "histories", ["card"], name: "index_histories_on_card", using: :btree
-  add_index "histories", ["lost_by"], name: "index_histories_on_lost_by", using: :btree
-  add_index "histories", ["won_by"], name: "index_histories_on_won_by", using: :btree
+  add_index "histories", ["card_id"], name: "index_histories_on_card_id", using: :btree
+  add_index "histories", ["lost_by_id"], name: "index_histories_on_lost_by_id", using: :btree
+  add_index "histories", ["won_by_id"], name: "index_histories_on_won_by_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"
