@@ -12,6 +12,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 
 group :development, :test do
   gem 'rspec-rails'
