@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140830160035) do
+ActiveRecord::Schema.define(version: 20140830161229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20140830160035) do
 
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
   add_index "cards", ["uuid"], name: "index_cards_on_uuid", using: :btree
+
+  create_table "histories", force: true do |t|
+    t.integer  "won_by"
+    t.integer  "lost_by"
+    t.integer  "card"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "histories", ["card"], name: "index_histories_on_card", using: :btree
+  add_index "histories", ["lost_by"], name: "index_histories_on_lost_by", using: :btree
+  add_index "histories", ["won_by"], name: "index_histories_on_won_by", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"
