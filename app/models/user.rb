@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
                 url:    info[:urls][provider.humanize]
     user
   end
+  
+  def rank
+    User.where("cards_count > ?", cards_count).count + 1
+  end
 end

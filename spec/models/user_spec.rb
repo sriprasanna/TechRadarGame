@@ -61,6 +61,11 @@ RSpec.describe User, :type => :model do
       expect(User.sort_by_ranking.first).to eq(@john)
       expect(User.sort_by_ranking.last).to eq(@joe)
     end
+    
+    it "should return the rank of an user" do
+      expect(@john.rank).to eq(1)
+      expect(@joe.rank).to eq(2)
+    end
   end
   
   describe "find_or_create_from_auth_hash" do
