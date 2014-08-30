@@ -5,6 +5,8 @@ rvm:
 
 addons:
   postgresql: "9.3"
+  code_climate:
+  repo_token: 81d92dd286c82aaef3f48da2dcbe6f6f73ae6fca74606e4f692596cd32319b03
 
 before_script:
   - psql -c 'create database app_test;' -U postgres
