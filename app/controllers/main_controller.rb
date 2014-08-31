@@ -30,6 +30,7 @@ class MainController < ApplicationController
   private
   def redirect_if_not_logged_in
     if not logged_in?
+      session[:return_to] = request.path
       flash[:notice] = "Please log in to continue."
       redirect_to "/login"
     end
