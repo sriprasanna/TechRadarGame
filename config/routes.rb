@@ -7,4 +7,5 @@ TechRadarGame::Application.routes.draw do
   get '/status_board', to: 'main#status_board'
   get '/timeline', to: 'main#timeline'
   get '/timeline_updates', to: 'main#timeline_updates'
+  root 'main#timeline'
 end
