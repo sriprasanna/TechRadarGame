@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   
   private
   def set_referrer
-    session[:return_to] ||= request.referer
+    session[:return_to] ||= request.referer || "/"
   end
   
   def logged_in?
