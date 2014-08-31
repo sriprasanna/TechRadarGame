@@ -5,13 +5,13 @@ class SessionController < ApplicationController
     user = User.find_or_create_from_auth_hash(auth_hash)
     session[:user_id] = user.id
     flash[:notice] = "Logged in succesfully!"
-    redirect_to session[:return_to]
+    redirect_to request.env['omniauth.origin'] || "/"
   end
   
   def destroy
     session[:user_id] = nil
     flash[:notice] = "Logged out succesfully!"
-    redirect_to session[:return_to]
+    redirect_to "/"
   end
 
   protected
