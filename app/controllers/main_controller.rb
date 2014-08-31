@@ -5,7 +5,7 @@ class MainController < ApplicationController
     card = Card.find_by_uuid(params[:uuid])
     previous_owner = card.user
     current_user.won(card)
-    flash[:notice] = "You have won the card from #{view_context.link_to('John Q Public', '/profile/' + previous_owner.id.to_s)}!".html_safe
+    flash[:notice] = "You have won the card from #{view_context.link_to(previous_owner.name, '/profile/' + previous_owner.id.to_s)}!".html_safe
     redirect_to "/"
   end
   
