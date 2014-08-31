@@ -1,16 +1,19 @@
 language: ruby
-
 rvm:
-  - 2.0.0
-
+- 2.0.0
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
   code_climate:
     repo_token: 81d92dd286c82aaef3f48da2dcbe6f6f73ae6fca74606e4f692596cd32319b03
-
 before_script:
-  - psql -c 'create database app_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
-
+- psql -c 'create database app_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate spec
+- RAILS_ENV=test bundle exec rake db:migrate spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: Dgn3EzQ707xLxmztxV9dCapnsYm5OO0qZNKAHdDtHlayJUyXU1JLVXiIZc+oP3OFq2XfPsLysVGTwF4agcbVHhPYAF8fsFDjCylj74fkg+7CSqQP51n3Stb81OLX/LwF1734v/cRGsnH8vYdK8TXs5n830hjC4qTOmuE3qnjbfM=
+  app: tech-radar-game
+  on:
+    repo: sriprasanna/TechRadarGame
