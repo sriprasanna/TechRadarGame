@@ -1,0 +1,19 @@
+.row
+  .span1
+    br
+    img.img-polaroid src="#{@user.image}"
+  .span7
+    dl
+      dt.pull-left Name&nbsp;&nbsp;
+      dd = @user.name
+      dt.pull-left URL&nbsp;&nbsp;
+      dd = link_to @user.url, @user.url
+      dt.pull-left Rank&nbsp;&nbsp;
+      dd = @user.rank
+      dt.pull-left No. of cards won&nbsp;&nbsp;
+      dd = @user.cards_count
+
+.row
+  .span9
+    h4 History
+    = render partial: "history", collection: @user.history

@@ -24,7 +24,7 @@ class MainController < ApplicationController
   def timeline_updates
     time = DateTime.parse(params[:after])
     @history = History.after(time)
-    render partial: "main/histories"
+    render partial: "main/history", collection: @history
   end
   
   private

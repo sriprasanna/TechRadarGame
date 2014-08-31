@@ -6,4 +6,5 @@ class History < ActiveRecord::Base
   belongs_to :card
   
   scope :after, ->(time) { where('created_at > ?', time) }
+  default_scope { order(created_at: :desc) }
 end

@@ -80,8 +80,8 @@ RSpec.describe MainController, :type => :controller do
       History.first.update created_at: 2.days.ago
       @john.won(@techniques_card)
       get :timeline_updates, after: 1.day.ago
-      expect(assigns(:history)).to eq([History.last])
-      expect(response).to render_template("main/_histories")
+      expect(assigns(:history)).to eq([History.first])
+      expect(response).to render_template("main/_history")
     end
   end
 end

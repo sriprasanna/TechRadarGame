@@ -15,3 +15,18 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+$(function(){
+  var timeline = $("#timeline"),
+      lastUpdatesFrom = new Date();
+  if (timeline.length > 0) {
+    getTimelineUpdates();
+  }
+  
+  function getTimelineUpdates () {
+    $.get('/timeline_updates', {after: lastUpdatesFrom}, function(data){
+      timeline.prepend(data);
+      window.setTimeout(getTimelineUpdates, 10000);
+    });
+    lastUpdatesFrom = new Date();
+  }
+});
