@@ -19,6 +19,15 @@ RSpec.describe MainController, :type => :controller do
       expect(flash[:notice]).to match(/^Please log in to continue./)
     end
     
+    it "should redirect to root if I am the owner of the card" do
+      session[:user_id] = @joe.id
+      get :won_card, uuid: @joe.cards.first.uuid
+      expect(@joe.cards.count).to eq(1)
+      expect(@joe.history.count).to eq(0)
+      expect(response).to redirect_to "/"
+      expect(flash[:notice]).to match("You already own this card.")
+    end
+    
     it "should change the owner of the card" do
       session[:user_id] = @joe.id
       get :won_card, uuid: @tools_card.uuid
