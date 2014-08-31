@@ -5,6 +5,8 @@ table.table.table-hover
         | Rank
       th
         | Name
+      th
+        | No. of cards won
   tbody
     - @users.each_with_index do |user, index|
       tr
@@ -13,6 +15,8 @@ table.table.table-hover
           = index + 1
         td
           = link_to user.name, "/profile/#{user.id}"
+        td
+          = user.cards_count
 
 javascript:
   window.setTimeout(function(){ window.location.reload(); }, 10000);
