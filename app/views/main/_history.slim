@@ -1,8 +1,9 @@
 p.well
-  = history.created_at.to_formatted_s(:long)
-  | &nbsp; &nbsp;
   = link_to "/profile/#{history.won_by.id}" do
     = image_tag history.won_by.image, class: "img-rounded", width: 50, height: 50
   = " won a <strong>#{history.card.type} card</strong> from ".html_safe
   = link_to "/profile/#{history.lost_by.id}" do
     = image_tag history.lost_by.image, class: "img-rounded", width: 50, height: 50
+  | &nbsp;
+  strong
+    = local_time_ago history.created_at

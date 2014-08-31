@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+//= require local_time
 $(function(){
   var timeline = $("#timeline"),
       lastUpdatesFrom = new Date();
