@@ -16,7 +16,7 @@ RSpec.describe MainController, :type => :controller do
     it "should redirect to login page if the user is not logged in" do
       get :won_card, uuid: @tools_card.uuid
       expect(response).to redirect_to "/login"
-      expect(flash[:notice]).to match(/^Please log in to continue./)
+      expect(flash[:notice]).to match(/^Por favor ingresa tus credenciales para continuar./)
     end
     
     it "should redirect to root if I am the owner of the card" do
@@ -25,7 +25,7 @@ RSpec.describe MainController, :type => :controller do
       expect(@joe.cards.count).to eq(1)
       expect(@joe.history.count).to eq(0)
       expect(response).to redirect_to "/"
-      expect(flash[:notice]).to match("You already own this card.")
+      expect(flash[:notice]).to match("El token ya te pertenece.")
     end
     
     it "should change the owner of the card" do
@@ -34,7 +34,7 @@ RSpec.describe MainController, :type => :controller do
       expect(@joe.cards.count).to eq(2)
       expect(@joe.history.count).to eq(1)
       expect(response).to redirect_to "/"
-      expect(flash[:notice]).to match("You have won the card from <a href=\"/profile/#{@john.id}\">John Q Public</a>!")
+      expect(flash[:notice]).to match("Acabas de ganar una partida al jugador <a href=\"/profile/#{@john.id}\">John Q Public</a>!")
     end
   end
   

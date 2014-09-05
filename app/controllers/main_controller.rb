@@ -6,9 +6,9 @@ class MainController < ApplicationController
     previous_owner = card.user
     if previous_owner != current_user
       current_user.won(card)
-      flash[:notice] = "You have won the card from #{view_context.link_to(previous_owner.name, '/profile/' + previous_owner.id.to_s)}!".html_safe
+      flash[:notice] = "Acabas de ganar una partida al jugador #{view_context.link_to(previous_owner.name, '/profile/' + previous_owner.id.to_s)}!".html_safe
     else
-      flash[:notice] = "You already own this card."
+      flash[:notice] = "El token ya te pertenece."
     end
     redirect_to "/"
   end
@@ -35,7 +35,7 @@ class MainController < ApplicationController
   def redirect_if_not_logged_in
     if not logged_in?
       session[:return_to] = request.path
-      flash[:notice] = "Please log in to continue."
+      flash[:notice] = "Por favor ingresa tus credenciales para continuar."
       redirect_to "/login"
     end
   end

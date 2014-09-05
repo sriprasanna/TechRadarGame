@@ -31,14 +31,14 @@ html lang="en"
           a.brand href="/"TechRadarGame
           .container.nav-collapse
             ul.nav
-              li= link_to "Status Board", "/status_board"
+              li= link_to "Tabla de posiciones", "/status_board"
             ul.nav.pull-right
               - if current_user
                 li= link_to current_user.name, "/profile/#{current_user.id}"
                 li= link_to "Logout", "/logout"
               - else
-                li= link_to "Login with twitter", "/auth/twitter"
-                li= link_to "Login with Facebook", "/auth/facebook"
+                li= link_to "Login con twitter", "/auth/twitter"
+                li= link_to "Login con Facebook", "/auth/facebook"
 
     br
     br

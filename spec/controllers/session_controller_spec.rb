@@ -12,7 +12,7 @@ RSpec.describe SessionController, :type => :controller do
       expect(response).to redirect_to session[:return_to]
       user = User.where(provider: "twitter", uid: "UUID").first
       expect(controller.current_user).to eq(user)
-      expect(flash[:notice]).to match(/^Logged in succesfully!/)
+      expect(flash[:notice]).to match(/^Ingreso exitoso!/)
     end
   end
   
@@ -22,7 +22,7 @@ RSpec.describe SessionController, :type => :controller do
       get :destroy
       expect(session[:user_id]).to be_nil
       expect(response).to redirect_to "/"
-      expect(flash[:notice]).to match(/^Logged out succesfully!/)
+      expect(flash[:notice]).to match(/^Sesión cerrada exitosomente!/)
     end
   end
 end

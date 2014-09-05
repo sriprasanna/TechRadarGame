@@ -1,7 +1,7 @@
 p.well
   = link_to "/profile/#{history.won_by.id}" do
     = image_tag history.won_by.image, class: "img-rounded", width: 50, height: 50
-  = " won a <strong>#{history.card.type} card</strong> from ".html_safe
+  = " ganó una tarjeta <strong>#{history.card.type}</strong> a ".html_safe
   = link_to "/profile/#{history.lost_by.id}" do
     = image_tag history.lost_by.image, class: "img-rounded", width: 50, height: 50
   | &nbsp;
