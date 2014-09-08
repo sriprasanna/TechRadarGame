@@ -17,6 +17,7 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "slim-rails"
 gem "local_time"
+gem 'rails-i18n', '~> 4.0.3'
 
 group :development, :test do
   gem 'rspec-rails'

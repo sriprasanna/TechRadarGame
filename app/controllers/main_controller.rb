@@ -6,7 +6,7 @@ class MainController < ApplicationController
     previous_owner = card.user
     if previous_owner != current_user
       current_user.won(card)
-      flash[:notice] = "Acabas de ganar una partida al jugador #{view_context.link_to(previous_owner.name, '/profile/' + previous_owner.id.to_s)}!".html_safe
+      flash[:notice] = "Acabas de ganar una partida a #{view_context.link_to(previous_owner.name, '/profile/' + previous_owner.id.to_s)}!".html_safe
     else
       flash[:notice] = "El token ya te pertenece."
     end

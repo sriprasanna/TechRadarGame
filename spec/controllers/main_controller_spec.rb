@@ -34,7 +34,7 @@ RSpec.describe MainController, :type => :controller do
       expect(@joe.cards.count).to eq(2)
       expect(@joe.history.count).to eq(1)
       expect(response).to redirect_to "/"
-      expect(flash[:notice]).to match("Acabas de ganar una partida al jugador <a href=\"/profile/#{@john.id}\">John Q Public</a>!")
+      expect(flash[:notice]).to match("Acabas de ganar una partida a <a href=\"/profile/#{@john.id}\">John Q Public</a>!")
     end
   end
   
